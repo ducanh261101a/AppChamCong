@@ -1,0 +1,120 @@
+import {StyleSheet} from 'react-native';
+import {text} from '../../Themes/color';
+import textColors from '../../Themes/Colors/textColors';
+import {fontFamilies, fontSizes} from '../../Themes/font';
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  background: {
+    bottom: 0,
+    height: '100%',
+    width: '100%',
+    resizeMode: 'stretch',
+    position: 'relative',
+  },
+  logo: {
+    // width: 246.26,
+    height: 53.55,
+    position: 'absolute',
+    top: 132,
+  },
+  layout: {
+    position: 'absolute',
+    width: '100%',
+    height: 322 - 33,
+    top: 221,
+    paddingHorizontal: 45,
+  },
+  boxLogin: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    shadowColor: '#000320',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    paddingVertical: 23,
+    paddingHorizontal: 26,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+  },
+  textCommon: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  welcome: {
+    fontFamily: fontFamilies.secondary,
+    fontSize: fontSizes.lg,
+    color: textColors.secondary,
+  },
+  form: {
+    position: 'absolute',
+    right: 26,
+    left: 26,
+    bottom: 120,
+    height: 95.26,
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  formItem: {
+    height: 39.26,
+    marginBottom: 17.35,
+    width: '100%',
+  },
+  options: {
+    position: 'absolute',
+    right: 26,
+    left: 26,
+    bottom: 72.65,
+    width: '100%',
+    justifyContent: 'space-between',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  ForgetPassword: {
+    fontFamily: fontFamilies.secondary,
+    color: text.labelFocusSeconday,
+    fontSize: fontSizes.xs,
+    textDecorationLine: 'underline',
+  },
+  rememberPasswordLabel: {
+    fontFamily: fontFamilies.secondary,
+    color: textColors.secondary,
+    fontSize: fontSizes.xs,
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 23,
+    right: 26,
+    left: 26,
+    height: 34.7,
+    borderRadius: 8,
+  },
+  buttonLayout: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonLabel: {
+    fontFamily: fontFamilies.primaryBold,
+    color: textColors.white,
+    fontSize: fontSizes.lg,
+    fontWeight: '700',
+  },
+});
