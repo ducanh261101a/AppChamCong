@@ -14,12 +14,12 @@ export {default as BoxElement} from './BoxElement/BoxElement';
 export {default as TabNavigation} from './TabNavigation/TabNavigation';
 export {default as SvgXml} from './SvgXml/SvgXml';
 export {default as Avatar} from './Avatar/Avatar';
-// export { default as Button } from "./Button/Button"
+export {default as Button} from './Button/Button';
 // export { default as Label } from "./Label/Label"
 export {default as DrawerComponent} from './Drawer/Drawer';
 export {default as MenuItem} from './MenuItem/MenuItem';
 export {default as InputElement} from './InputElement/InputElement';
-// export { default as RecoveryPasswordLayout } from "./RecoveryPasswordLayout/RecoveryPasswordLayout"
+// export {default as RecoveryPasswordLayout} from './RecoveryPasswordLayout/RecoveryPasswordLayout';
 // export { default as NotificationItem } from "./NotificationItem/NotificationItem"
 export {default as DashboardItem} from './DashboardItem/DashboardItem';
 export {default as QuickNav} from './QuickNav/QuickNav';
