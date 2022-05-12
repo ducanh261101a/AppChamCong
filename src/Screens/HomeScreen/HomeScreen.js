@@ -92,7 +92,8 @@ export default function HomeScreen({navigation}) {
               <Text style={styles.salaryTotalTitleText}>
                 {HOMESCREEN_SALARY_TOTAL_TITLE}
               </Text>
-              <TouchableOpacity onPress={() => setShowSalary(!showSalary)}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('FaceCheck')}>
                 <SvgXml
                   xml={
                     showSalary ? images.HideSalaryIcon : images.ShowSalaryIcon

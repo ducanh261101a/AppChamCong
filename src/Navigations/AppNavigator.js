@@ -18,6 +18,7 @@ import {
   SplashScreen,
   ForgetPasswordScreen,
   RecoveryPasswordScreen,
+  FaceCheck,
 } from '../Screens';
 import mainColors from '../Themes/Colors/mainColors';
 
@@ -51,6 +52,7 @@ const MainScreen = () => {
         component={RecoveryPasswordStackNavigator}
       />
       <MainStack.Screen name="HomeScreen" component={HomeScreen} />
+      <MainStack.Screen name="FaceCheck" component={FaceCheck} />
     </MainStack.Navigator>
   );
 };
