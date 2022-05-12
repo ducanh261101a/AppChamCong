@@ -19,8 +19,28 @@ import {
   DangKiVaoRaScreen,
   DanhSachDangKiVaoRaScreen,
   LichSuChamCongScreen,
+  ForgetPasswordScreen,
+  RecoveryPasswordScreen,
+  FaceCheck,
 } from '../Screens';
 import mainColors from '../Themes/Colors/mainColors';
+
+const RecoveryPasswordStackNavigator = () => {
+  return (
+    <RecoveryPasswordStack.Navigator
+      screenOptions={{header: () => null}}
+      initialRouteName="ForgetPasswordScreen">
+      <RecoveryPasswordStack.Screen
+        name="ForgetPasswordScreen"
+        component={ForgetPasswordScreen}
+      />
+      <RecoveryPasswordStack.Screen
+        name="RecoveryPasswordScreen"
+        component={RecoveryPasswordScreen}
+      />
+    </RecoveryPasswordStack.Navigator>
+  );
+};
 
 const MainScreen = () => {
   return (
@@ -30,10 +50,15 @@ const MainScreen = () => {
       <MainStack.Screen name="SplashScreen" component={SplashScreen} />
       <MainStack.Screen name="OnboardingScreen" component={OnboardingScreen} />
       <MainStack.Screen name="LoginScreen" component={LoginScreen} />
+      <MainStack.Screen
+        name="RecoveryPasswordScreenStack"
+        component={RecoveryPasswordStackNavigator}
+      />
       <MainStack.Screen name="HomeScreen" component={HomeScreen} />
       <MainStack.Screen name="DanhSachDangKiVaoRaScreen" component={DanhSachDangKiVaoRaScreen} />
       <MainStack.Screen name="DangKiVaoRaScreen" component={DangKiVaoRaScreen} />
       <MainStack.Screen name="LichSuChamCongScreen" component={LichSuChamCongScreen} />
+      <MainStack.Screen name="FaceCheck" component={FaceCheck} />
     </MainStack.Navigator>
   );
 };
@@ -42,6 +67,7 @@ const sideMenuDisabledScreens = [
   'LoginScreen',
   'OnboardingScreen',
   'SplashScreen',
+  'RecoveryPasswordScreen',
 ];
 
 const AppNavigator = () => {

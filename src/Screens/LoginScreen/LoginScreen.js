@@ -93,10 +93,9 @@ export default function LoginScreen({navigation}) {
                 }}
               />
               <TouchableOpacity
-              // onPress={() =>
-              //   navigation.navigate('RecoveryPasswordScreenStack')
-              // }
-              >
+                onPress={() =>
+                  navigation.navigate('RecoveryPasswordScreenStack')
+                }>
                 <Text style={styles.ForgetPassword}>
                   {FORGOT_PASSWORD_LABEL}
                 </Text>
