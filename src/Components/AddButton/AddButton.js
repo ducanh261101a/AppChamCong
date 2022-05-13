@@ -11,9 +11,9 @@ export default function AddButton({ onPress }) {
             style={styles.container}
             onPress={onPress}
         >
-            {/* <SvgXml
+            <SvgXml
                 xml={images.AddIcon}
-            /> */}
+            />
         </TouchableOpacity>
     )
 }

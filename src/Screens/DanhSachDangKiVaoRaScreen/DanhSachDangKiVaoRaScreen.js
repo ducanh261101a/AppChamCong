@@ -59,6 +59,7 @@ export default function DanhSachDangKiVaoRaScreen({ navigation }) {
 
                 <AddButton
                     onPress={() => navigation.navigate('DangKiVaoRaScreen')}
+                    style={styles.addButton}
                 />
             </GeneralLayout>
         </Wrapper >

@@ -15,6 +15,9 @@ export default function QuickNavItem({width, icon, label, code, onPress}) {
       case 'thong-tin-cham-cong':
         navigation.navigate('QuanLyChamCongScreen');
         break;
+      case 'dang-ki-vao-ra':
+        navigation.navigate('DangKiVaoRaScreen');
+        break;
       case 'danh-sach-dang-ki-vao-ra':
         navigation.navigate('DanhSachDangKiVaoRaScreen');
         break;

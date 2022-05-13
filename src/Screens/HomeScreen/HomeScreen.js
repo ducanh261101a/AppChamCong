@@ -19,6 +19,7 @@ import {
     HOMESCREEN_SALARY_HEADER_TITLE,
     HOMESCREEN_SALARY_HEADER_UNIT,
     HOMESCREEN_SALARY_TOTAL_TITLE,
+    DANHSACHDANGKIVAORASCREEN_TITLE,
     WELCOME,
 } from '../../Shared/text';
 import {SvgXml} from '../../Components';
@@ -162,7 +163,7 @@ export default function HomeScreen({navigation}) {
             <QuickNavItem
                 onPress={() => navigation.push('DanhSachDangKiVaoRaScreen')}
                 source={images.DangKiVaoRaIcon}
-                title={HOMESCREEN_QUICK_NAVIGATION_ITEM_TITLE_3}
+                title={DANHSACHDANGKIVAORASCREEN_TITLE}
             />
             <QuickNavItem
                 source={images.DangKiCongTacNgoaiIcon}

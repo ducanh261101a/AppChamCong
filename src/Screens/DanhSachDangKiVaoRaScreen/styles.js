@@ -17,5 +17,7 @@ export default StyleSheet.create({
         paddingHorizontal: 18,
         paddingVertical: 11,
     },
-
+    addButton: {
+        
+    }
 })

@@ -10,7 +10,7 @@ export default [
   {
     id: 1,
     icon: images.DangKiVaoRaIcon,
-    label: 'Đăng kí\nRa/ vào',
+    label: 'Danh sách đăng kí\nRa/ vào',
     code: 'danh-sach-dang-ki-vao-ra',
   },
   {

@@ -17,10 +17,14 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-        fontFamily: fontFamilies.defaultBold,
+        // fontFamily: fontFamilies.defaultBold,
+        // fontSize: fontSizes.lg,
+        // color: text.black,
+        // marginLeft: 10
+        fontFamily: fontFamilies.primary,
+        // fontWeight: '700',
         fontSize: fontSizes.lg,
-        color: text.black,
-        marginLeft: 10
+        color: '#444242',
     },
     titleHideBackButton: {
         fontFamily: fontFamilies.defaultBold,
