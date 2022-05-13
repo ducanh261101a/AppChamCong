@@ -1,14 +1,13 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet } from "react-native";
 import { background } from "../../Themes/color";
+import mainColors from "../../Themes/Colors/mainColors";
+import { fontFamilies, fontSizes } from "../../Themes/font";
 
 export default StyleSheet.create({
-    wrapper: {
-        backgroundColor: background.primary
-    },
     container: {
         flex: 1,
         width: "100%",
-        backgroundColor: background.secondary,
+        backgroundColor: mainColors.background,
         paddingHorizontal: 17,
         paddingTop: 25,
         height: '100%'
@@ -19,4 +18,16 @@ export default StyleSheet.create({
         width: "100%",
         height: "100%"
     },
+    buttonsContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 32
+    },
+    button: {
+        width: 112,
+        height: 37,
+        fontSize: fontSizes.sm,
+        fontFamily: fontFamilies.primary
+    }
 })

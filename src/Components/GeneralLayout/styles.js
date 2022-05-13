@@ -1,7 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
-// import { getStatusBarHeight } from "../../Shared/StatusBarUtil";
-import { background } from "../../Themes/color";
 import { BODY_HEIGHT } from "../../Shared/constants"
+import mainColors from "../../Themes/Colors/mainColors";
 
 export default StyleSheet.create({
     container: {
@@ -17,6 +16,6 @@ export default StyleSheet.create({
         borderRadius: 15
     },
     backgroundBody: {
-        backgroundColor: background.primary,
+        backgroundColor: mainColors.backgroundPrimary,
     }
 })

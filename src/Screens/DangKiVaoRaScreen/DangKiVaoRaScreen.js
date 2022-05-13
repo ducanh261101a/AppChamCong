@@ -1,32 +1,36 @@
-import React, { useState } from "react";
-import { Wrapper } from "../../Components";
-import styles from "./styles";
-import { GeneralLayout } from "../../Components";
+import React, { useState } from 'react';
+import { Wrapper, InputAndPicker, Button } from '../../Components';
+import styles from './styles';
+import { GeneralLayout } from '../../Components';
 import { DANGKIVAORASCREEN_TITLE } from '../../Shared/text';
 import { useEmpoyeeRequest } from './services';
+import { useDispatch } from 'react-redux';
+import { resetClipboard } from '../../Store/Reducers/setClipboardSlice';
+import { View } from 'react-native';
 
-
-export default function DangKiVaoRaScreen({navigation}) {
+export default function DangKiVaoRaScreen({
+    navigation
+}) {
     const dispatch = useDispatch()
-    const { requestReasonGoOut, listEmployeeHasApproveRequest, listEmployeeInCompany, employeeRequest } = useEmpoyeeRequest();
-    const [title, setTitle] = useState('');
-    const [reason, setReason] = useState('');
-    const [content, setContent] = useState('');
-    const [approvalUsers, setApprovalUsers] = useState({ donvi: '', nhansu: '' });
-    const [timeStart, setTimeStart] = useState();
-    const [timeEnd, setTimeEnd] = useState();
+    // const { requestReasonGoOut, listEmployeeHasApproveRequest, listEmployeeInCompany, employeeRequest } = useEmpoyeeRequest()
+    const [title, setTitle] = useState('')
+    const [reason, setReason] = useState('')
+    const [content, setContent] = useState('')
+    const [approvalUsers, setApprovalUsers] = useState({
+        donvi: '',
+        nhansu: ''
+    })
+    const [timeStart, setTimeStart] = useState()
+    const [timeEnd, setTimeEnd] = useState()
 
     return (
-        <Wrapper
-            bodyStyle={styles.wrapper}
-            containerStyle={styles.container}
-        >
+        <Wrapper>
             <GeneralLayout
                 headerLeftTitle={DANGKIVAORASCREEN_TITLE}
                 bodyStyle={styles.body}
                 hasBackgroundBody={true}
             >
-                <Input
+                <InputAndPicker
                     label='Nơi đến'
                     labelPosition='inside'
                     size='default'
@@ -37,7 +41,7 @@ export default function DangKiVaoRaScreen({navigation}) {
                     value={title}
                     onChangeText={(event) => setTitle(event)}
                 />
-                <Input
+                <InputAndPicker
                     name='lydodangki'
                     label='Lý do đăng kí'
                     labelPosition='inside'
@@ -46,9 +50,9 @@ export default function DangKiVaoRaScreen({navigation}) {
                     margin={{
                         bottom: 17
                     }}
-                    options={requestReasonGoOut}
+                    // options={requestReasonGoOut}
                 />
-                <Input
+                <InputAndPicker
                     label='Lý do chi tiết'
                     labelPosition='inside'
                     size='default'
@@ -58,7 +62,7 @@ export default function DangKiVaoRaScreen({navigation}) {
                     }}
                     onChangeText={(event) => setContent(event)}
                 />
-                <Input
+                <InputAndPicker
                     name='quanlydonvi'
                     label='Quản lý đơn vị'
                     labelPosition='inside'
@@ -67,9 +71,9 @@ export default function DangKiVaoRaScreen({navigation}) {
                     margin={{
                         bottom: 17
                     }}
-                    options={listEmployeeInCompany}
+                    // options={listEmployeeInCompany}
                 />
-                <Input
+                <InputAndPicker
                     name='quanlynhansu'
                     label='Quản lý nhân sự'
                     labelPosition='inside'
@@ -78,9 +82,9 @@ export default function DangKiVaoRaScreen({navigation}) {
                     margin={{
                         bottom: 17
                     }}
-                    options={listEmployeeHasApproveRequest}
+                    // options={listEmployeeHasApproveRequest}
                 />
-                <Input
+                <InputAndPicker
                     label='Bắt đầu'
                     labelPosition='inside'
                     size='default'
@@ -91,7 +95,7 @@ export default function DangKiVaoRaScreen({navigation}) {
                     onPress={(event) => setTimeStart(event)}
                     datePickerMode="datetime"
                 />
-                <Input
+                <InputAndPicker
                     label='Kết thúc'
                     labelPosition='inside'
                     size='default'
@@ -102,30 +106,28 @@ export default function DangKiVaoRaScreen({navigation}) {
                     datePickerMode="datetime"
                     onPress={(event) => setTimeEnd(event)}
                 />
-                <Buttons
-                    size="medium"
-                    buttons={[
-                        {
-                            body: {
-                                title: "Hủy",
-                                onPress: () => {
-                                    navigation.goBack()
-                                    dispatch(resetClipboard())
-                                }
-                            },
-                            color: 'primary_2'
-                        },
-                        {
-                            body: {
-                                title: "Đăng kí",
-                                bold: true,
-                                onPress: () => employeeRequest(title, content, timeStart, timeEnd)
-                            },
-                            color: 'primary'
-                        },
-                    ]}
-                />
+
+                <View style={styles.buttonsContainer}>
+                    <Button
+                        type="secondary"
+                        onPress={() => {
+                            navigation.goBack()
+                            dispatch(resetClipboard())
+                        }}
+                        layoutStyles={styles.button}
+                    >
+                        Hủy
+                    </Button>
+                    <Button
+                        type="primary"
+                        onPress={() => employeeRequest(title, content, timeStart, timeEnd)}
+                        layoutStyles={styles.button}
+                        textBold={true}
+                    >
+                        Đăng ký
+                    </Button>
+                </View>
             </GeneralLayout>
         </Wrapper>
-    )
+    );
 }

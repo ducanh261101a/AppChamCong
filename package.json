@@ -26,6 +26,7 @@
     "react-native-calendars": "^1.1282.0",
     "react-native-camera": "^4.2.1",
     "react-native-camera-hooks": "^0.5.3",
+    "react-native-date-picker": "^4.2.1",
     "react-native-device-info": "^8.7.0",
     "react-native-elements": "^3.4.2",
     "react-native-fs": "^2.20.0",

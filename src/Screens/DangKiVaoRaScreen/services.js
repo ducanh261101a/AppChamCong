@@ -1,25 +1,28 @@
-// import mushroom, { Employee, Employee_role, Request_reason } from 'pmcc-api'
+// import { Employee, Request_reason } from 'pmcc-api'
 import { useEffect, useState } from 'react';
 // import _ from 'lodash'
 import { useSelector } from 'react-redux';
 // import { RootState } from '../../Store/configureStore';
-// import { EmployeeReq, ListEmployeeHasApproveRequestReq, RequestReasonReq } from '../../Api/listAsync';
-// import { EmployeeRequestCreateReq, EmployeeRequestGoOutCreateReq } from '../../Api/createAsync';
+// import employeeRequestApi from '../../Api/employeeRequestApi';
+// import employeeRequestGoOutApi from '../../Api/employeeRequestGoOutApi';
+// import employeeApi from '../../Api/employeeApi';
+// import employeeRoleApi from '../../Api/employeeRoleApi';
+// import requestReasonApi from '../../Api/requestReasonApi';
 
 export const useEmpoyeeRequest = () => {
     // const clipboard = useSelector((state) => state.clipboard.value)
     // const user = useSelector((state) => state.user.value)
-    // const [requestReasonGoOut, setRequestReasonGoOut] = useState<any>()
-    // const [listEmployeeHasApproveRequest, setListEmployeeHasApproveRequest] = useState<any>()
-    // const [listEmployeeInCompany, setListEmployeeInCompany] = useState<any>()
+    // const [requestReasonGoOut, setRequestReasonGoOut] = useState()
+    // const [listEmployeeHasApproveRequest, setListEmployeeHasApproveRequest] = useState()
+    // const [listEmployeeInCompany, setListEmployeeInCompany] = useState()
 
-    // let requestReasonRes: Request_reason[]
-    // let listEmployeeHasApproveRequestRes: any[]
-    // let employeesRes: Employee[]
+    // let requestReasonRes
+    // let listEmployeeHasApproveRequestRes
+    // let employeesRes
 
     // const getRequestReasonGoOut = async () => {
     //     try {
-    //         requestReasonRes = await RequestReasonReq({
+    //         requestReasonRes = await requestReasonApi.listAsyncReq({
     //             fields: "type,name,id",
     //             filters: [
     //                 "type=GO_OUT",
@@ -27,7 +30,7 @@ export const useEmpoyeeRequest = () => {
     //             ]
     //         });
 
-    //         const converted = requestReasonRes.map((item: Request_reason) => {
+    //         const converted = requestReasonRes.map((item) => {
     //             return {
     //                 label: item.name,
     //                 value: item.id
@@ -43,9 +46,9 @@ export const useEmpoyeeRequest = () => {
 
     // const getListEmployeeHasApproveRequest = async () => {
     //     try {
-    //         listEmployeeHasApproveRequestRes = await ListEmployeeHasApproveRequestReq();
+    //         listEmployeeHasApproveRequestRes = await employeeRoleApi.getListEmployeeHasApproveRequestAsyncReq();
 
-    //         const converted = listEmployeeHasApproveRequestRes.map((item: any) => {
+    //         const converted = listEmployeeHasApproveRequestRes.map((item) => {
     //             return {
     //                 label: item.e.administrative_info.name.full_name,
     //                 value: item.e.id
@@ -62,13 +65,13 @@ export const useEmpoyeeRequest = () => {
 
     // const getListEmployeeInCompany = async () => {
     //     try {
-    //         employeesRes = await EmployeeReq({
+    //         employeesRes = await employeeApi.listAsyncReq({
     //             filters: [
     //                 "disabled=false"
     //             ]
     //         });
 
-    //         const converted = employeesRes.map((item: Employee) => {
+    //         const converted = employeesRes.map((item) => {
     //             return {
     //                 label: item.administrative_info?.name?.full_name,
     //                 value: item.id
@@ -84,10 +87,10 @@ export const useEmpoyeeRequest = () => {
     // }
 
     // const employeeRequest = async (
-    //     title?: string,
-    //     content?: string,
-    //     timeStart?: Date,
-    //     timeEnd?: Date
+    //     title,
+    //     content,
+    //     timeStart,
+    //     timeEnd
     // ) => {
     //     const reason = _.find(clipboard, { 'name': 'lydodangki' })
     //     const approvalUsers1 = _.find(clipboard, { 'name': 'quanlydonvi' })
@@ -110,7 +113,7 @@ export const useEmpoyeeRequest = () => {
     //         ]
     //     };
     //     try {
-    //         const newId = await EmployeeRequestCreateReq(employee_request_object);
+    //         const newId = await employeeRequestApi.createAsyncReq(employee_request_object);
     //         if (newId) {
     //             const employee_request_go_out_object = {
     //                 id: newId,
@@ -118,7 +121,7 @@ export const useEmpoyeeRequest = () => {
     //                 from_date: new Date(timeStart || new Date()).toISOString(), // required - Từ thời điểm
     //                 to_date: new Date(timeEnd || new Date()).toISOString(),
     //             }
-    //             const aa = await EmployeeRequestGoOutCreateReq(employee_request_go_out_object)
+    //             const aa = await employeeRequestGoOutApi.createAsyncReq(employee_request_go_out_object)
     //             console.log("Thêm mới thành công, new id: %o", aa);
     //         }
     //     } catch (error) {

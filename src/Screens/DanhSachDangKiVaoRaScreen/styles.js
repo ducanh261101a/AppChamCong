@@ -1,14 +1,11 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { background } from "../../Themes/color";
+import mainColors from "../../Themes/Colors/mainColors";
 
 export default StyleSheet.create({
-    wrapper: {
-        backgroundColor: background.primary
-    },
     container: {
         flex: 1,
         width: "100%",
-        backgroundColor: background.secondary,
+        backgroundColor: mainColors.background,
         paddingHorizontal: 17,
         paddingTop: 25,
         height: '100%'
@@ -17,7 +14,5 @@ export default StyleSheet.create({
         paddingHorizontal: 18,
         paddingVertical: 11,
     },
-    addButton: {
-        
-    }
+
 })

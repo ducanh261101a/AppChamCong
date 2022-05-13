@@ -1,35 +1,32 @@
 import { View, Text, ScrollView, Button } from 'react-native';
 import React, { useState } from 'react';
-import { CheckInDetail, GeneralLayout, Input, LinearGradientCommon, Wrapper } from '../../Components';
+import { CheckInDetail, GeneralLayout, InputAndPicker, LinearGradientCommon, Wrapper } from '../../Components';
 import styles from './styles';
 import { LICHSUCHAMCONGSCREEN_TITLE } from '../../Shared/text';
-// import { useTimeKeepingCurrent } from './services';
+import { useTimeKeepingCurrent } from './services';
 import {
     getTimeString,
     convertDateToString,
     getStringOfADay
 } from '../../Shared/utils';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { setPopup } from '../../Store/Reducers/setPopupSlice';
-import { FlatList } from 'react-native-gesture-handler';
+// import { FlatList } from 'react-native-gesture-handler';
 
 
 export default function LichSuChamCongScreen() {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     // const {
     //     timeKeepingHistory,
     //     getTimeKeepingHistoryFilter,
     //     getTimeKeepingHistory
     // } = useTimeKeepingCurrent()
 
-    const [filterFrom, setFilterFrom] = useState<string>('')
-    const [filterTo, setFilterTo] = useState<string>('')
+    const [filterFrom, setFilterFrom] = useState('')
+    const [filterTo, setFilterTo] = useState('')
 
     return (
-        <Wrapper
-            bodyStyle={styles.wrapper}
-            containerStyle={styles.container}
-        >
+        <Wrapper>
             <GeneralLayout
                 headerLeftTitle={LICHSUCHAMCONGSCREEN_TITLE}
             >
@@ -43,7 +40,7 @@ export default function LichSuChamCongScreen() {
                             width: "50%",
                             paddingHorizontal: 9
                         }}>
-                        <Input
+                        <InputAndPicker
                             label="Từ"
                             labelPosition="left"
                             size="small"
@@ -57,7 +54,7 @@ export default function LichSuChamCongScreen() {
                         width: "50%",
                         paddingHorizontal: 9
                     }}>
-                        <Input
+                        <InputAndPicker
                             label="Đến"
                             labelPosition="left"
                             size="small"
@@ -74,16 +71,16 @@ export default function LichSuChamCongScreen() {
                     onPress={() => {
                         if (filterFrom && filterTo) {
                             if (Date.parse(getStringOfADay(filterFrom).thisDayString) > Date.parse(getStringOfADay(filterTo).thisDayString)) {
-                                dispatch(setPopup({
-                                    isOpen: true,
-                                    title: "Lỗi",
-                                    children: "Vui lòng chọn lại ngày!"
-                                }))
-                            // } else {
-                            //     getTimeKeepingHistoryFilter(filterFrom, filterTo)
+                                // dispatch(setPopup({
+                                //     isOpen: true,
+                                //     title: "Lỗi",
+                                //     children: "Vui lòng chọn lại ngày!"
+                                // }))
+                            } else {
+                                // getTimeKeepingHistoryFilter(filterFrom, filterTo)
                             }
-                        // } else {
-                        //     getTimeKeepingHistory()
+                        } else {
+                            // getTimeKeepingHistory()
                         }
                     }}
                 >

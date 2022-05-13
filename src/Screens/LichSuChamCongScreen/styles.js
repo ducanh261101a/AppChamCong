@@ -1,21 +1,17 @@
 import { StyleSheet, Dimensions, Platform } from "react-native";
-import { getBottomBarHeight } from "../../Shared/BottomBarUtil";
 import { BODY_HEIGHT } from "../../Shared/constants";
-import { getStatusBarHeight } from "../../Shared/StatusBarUtil";
-import { background, button, text } from "../../Themes/color";
+import { background, text } from "../../Themes/color";
+import mainColors from "../../Themes/Colors/mainColors";
 import { fontFamilies, fontSizes } from "../../Themes/font";
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
 export default StyleSheet.create({
-    wrapper: {
-        backgroundColor: background.primary
-    },
     container: {
         flex: 1,
         width: "100%",
-        backgroundColor: background.secondary,
+        backgroundColor: mainColors.background,
         paddingTop: 22,
     },
     history: {
@@ -34,7 +30,9 @@ export default StyleSheet.create({
     },
     filterButtonText: {
         textTransform: 'uppercase',
-        fontSize: fontSizes.semi_md,
-        color: text.labelWhite
+        fontSize: fontSizes.md,
+        color: text.labelWhite,
+        fontFamily: fontFamilies.secondary,
+        fontWeight: 'bold'
     }
 })

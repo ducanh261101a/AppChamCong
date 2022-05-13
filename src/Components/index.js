@@ -28,3 +28,4 @@ export { default as QuickNavItem } from './QuickNavItem/QuickNavItem';
 export { default as CheckBoxElement } from './CheckBox/CheckBox';
 export { default as AddButton } from './AddButton/AddButton';
 export { default as GeneralLayout } from './GeneralLayout/GeneralLayout';
+export {default as InputAndPicker} from './InputAndPicker/InputAndPicker';

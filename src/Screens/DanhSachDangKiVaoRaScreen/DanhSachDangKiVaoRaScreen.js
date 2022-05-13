@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    AddButton,
+    Button,
     GeneralLayout,
     // TabPanel,
     Wrapper
@@ -10,9 +10,11 @@ import {
     DANHSACHDANGKIVAORASCREEN_RIGHT_TITLE,
     DANHSACHDANGKIVAORASCREEN_TITLE
 } from '../../Shared/text';
-// import { useEmployeeRequest } from './services';
+import { useEmployeeRequest } from './services';
 
-export default function DanhSachDangKiVaoRaScreen({ navigation }) {
+export default function DanhSachDangKiVaoRaScreen({
+    navigation
+}) {
 
     // const {
     //     goOutRequestWaitingForApproval,
@@ -21,15 +23,13 @@ export default function DanhSachDangKiVaoRaScreen({ navigation }) {
     // } = useEmployeeRequest()
 
     return (
-        <Wrapper
-            bodyStyle={styles.wrapper}
-            containerStyle={styles.container}
-        >
+        <Wrapper>
             <GeneralLayout
                 headerLeftTitle={DANHSACHDANGKIVAORASCREEN_TITLE}
                 headerRight={{
+                    type: "string",
                     title: DANHSACHDANGKIVAORASCREEN_RIGHT_TITLE,
-                    onPress: () => navigation.navigate('LichSuVaoRaScreen')
+                    onPress: () => navigation.navigate('LichSuChamCongScreen')
                 }}
                 bodyStyle={styles.body}
                 hasBackgroundBody={true}
@@ -57,9 +57,10 @@ export default function DanhSachDangKiVaoRaScreen({ navigation }) {
                     ]}
                 /> */}
 
-                <AddButton
+
+                <Button
+                    type='add'
                     onPress={() => navigation.navigate('DangKiVaoRaScreen')}
-                    style={styles.addButton}
                 />
             </GeneralLayout>
         </Wrapper >

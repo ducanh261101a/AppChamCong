@@ -2,10 +2,11 @@ import { View, Text, Dimensions } from 'react-native'
 import React from 'react'
 import styles from './styles'
 // import { ICheckInDetail } from '../../Types/ICheckInDetail'
-import { Buttons, BoxShadow } from '..'
+import { BoxShadow } from '..'
 import { COME_TITLE_SHORT, FULL_DAY, GO_OUT_TITLE_SHORT, HALF_DAY, IN_OUT_UNIT } from '../../Shared/text'
 import { SvgXml } from '..'
 import images from '../../Shared/images'
+import TimeInOutLogs from '../TimeInOutLogs/TimeInOutLogs'
 
 export default function CheckInDetail({
     date,
@@ -34,36 +35,17 @@ export default function CheckInDetail({
                         </Text>
                     </View>
                     <View style={styles.headerRight}>
-                        <Buttons
-                            size='small'
-                            buttons={[
-                                {
-                                    body: {
-                                        title: COME_TITLE_SHORT
-                                    },
-                                    footer: {
-                                        title: checkIn
-                                    },
-                                    color: 'primary'
-                                },
-                                {
-                                    body: {
-                                        title: GO_OUT_TITLE_SHORT
-                                    },
-                                    footer: {
-                                        title: checkOut
-                                    },
-                                    color: 'secondary'
-                                }
-
-                            ]}
+                        <TimeInOutLogs
+                            size="small"
+                            timeIn={checkIn}
+                            timeOut={checkOut}
                         />
                     </View>
                 </View>
                 <View style={styles.body}>
-                    {/* <SvgXml
+                    <SvgXml
                         xml={images.TimesCheckInIcon}
-                    /> */}
+                    />
                     <View style={styles.bodyContent}>
                         {
                             inOutTime && inOutTime.map((item, index) => (
