@@ -1,8 +1,8 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
-import {BoxShadow} from '..';
-import {SvgXml} from '..';
+import {BoxShadow} from '../BoxShadow/BoxShadow';
+import {SvgXml} from '../SvgXml/SvgXml';
 import images from '../../Shared/images';
 
 export default function TabNavigation({focus}) {

@@ -20,8 +20,8 @@ export default function App() {
     <NativeBaseProvider>
       <Provider store={store}>
         <AppNavigator />
-        {/* <Loading />
-      <Popup /> */}
+        <Loading />
+        <Popup />
       </Provider>
     </NativeBaseProvider>
   );

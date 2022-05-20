@@ -15,39 +15,33 @@ import {
   WELCOME,
 } from '../../Shared/text';
 import {CheckBox, InputElement} from '../../Components';
-// import {
-//     useLogin
-// } from './services';
-// import {
-//     useStorageAsync
-// } from '../../Shared/hooks';
-// import {useSelector} from 'react-redux';
+import {useLogin} from './services';
+import {useStorageAsync} from '../../Shared/hooks';
 import LinearGradient from 'react-native-linear-gradient';
 import images from '../../Shared/images';
+// import {NetworkInfo} from 'react-native-network-info';
 const BackgroundImage = require('../../Assets/Images/BG.png');
 const LogoImage = require('../../Assets/Images/Logo.png');
 
 export default function LoginScreen({navigation}) {
-  // const { handleLogin } = useLogin()
-  // const {
-  //     setItem,
-  //     removeItem,
-  //     getItem
-  // } = useStorageAsync('remember_account')
-
+  const {handleLogin, errors} = useLogin();
   const [account, setAccount] = useState();
   const [password, setPassword] = useState('');
   const [rememberAccount, setRememberAccount] = useState(false);
-  // const isLogin = useSelector(state => state.isLogin.value);
+  const {getItem} = useStorageAsync('remember_account');
+
+  // const token = getItem();
 
   // useEffect(() => {
-  //     if (isLogin) {
-  //         navigation.replace('HomeScreen')
-  //     }
-  //     (async () => {
-  //         console.log(await getItem())
-  //     })()
-  // }, [])
+  //   console.log('token', token);
+
+  //   if (token) {
+  //     navigation.replace('HomeScreen');
+  //   }
+  //   (async () => {
+  //     console.log(await getItem());
+  //   })();
+  // }, []);
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -82,6 +76,7 @@ export default function LoginScreen({navigation}) {
                 type="password"
               />
             </View>
+
             <View style={styles.options}>
               <CheckBox
                 title={REMEMBER_PASSWORD_LABEL}
@@ -103,15 +98,9 @@ export default function LoginScreen({navigation}) {
             </View>
             <TouchableOpacity
               style={styles.buttonContainer}
-              // onPress={async () => {
-              //     handleLogin(account, password)
-              //     if (rememberAccount === true) {
-              //         setItem('checked')
-              //     } else {
-              //         removeItem()
-              //     }
-              // }}
-              onPress={() => navigation.replace('HomeScreen')}>
+              onPress={async () => {
+                handleLogin(account, password, rememberAccount);
+              }}>
               <LinearGradient
                 style={styles.buttonLayout}
                 colors={['#F07F7E', '#F9A857']}

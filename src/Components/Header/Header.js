@@ -1,7 +1,7 @@
 import {View, TouchableOpacity, Text} from 'react-native';
 import React from 'react';
 import styles from './styles';
-import {SvgXml} from '..';
+import {SvgXml} from '../SvgXml/SvgXml';
 import {DrawerActions} from '@react-navigation/native';
 import Avatar from '../Avatar/Avatar';
 import {useNavigation} from '@react-navigation/native';

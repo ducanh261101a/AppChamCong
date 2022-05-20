@@ -12,11 +12,14 @@ import React, {useEffect} from 'react';
 import styles from './styles';
 // import {useSelector} from 'react-redux';
 // import {RootState} from '../../Store/configureStore';
-import {Header, TabNavigation} from '..';
+// import {Header, TabNavigation, SvgXml} from '../index';
+import {Header} from '../Header/Header';
+import {TabNavigation} from '../TabNavigation/TabNavigation';
+import {SvgXml} from '../SvgXml/SvgXml';
 // import {useNavigation} from '@react-navigation/native';
 // import { useAuth } from '../../Shared/hooks';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {SvgXml} from '..';
+
 import images from '../../Shared/images';
 export default function Wrapper({children, isInHomeScreen, bottomNav}) {
   // const navigation = useNavigation();

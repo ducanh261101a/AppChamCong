@@ -25,6 +25,8 @@ target 'ChamCong' do
 
   pod 'RNFS', :path => '../node_modules/react-native-fs'
 
+  pod 'react-native-network-info', :path => '../node_modules/react-native-network-info'
+
   target 'ChamCongTests' do
     inherit! :complete
     # Pods for testing

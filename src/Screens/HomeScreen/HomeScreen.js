@@ -21,7 +21,7 @@ import {
 import {SvgXml} from '../../Components';
 
 import LinearGradient from 'react-native-linear-gradient';
-// import {useEmployeeProfile} from './services';
+import {useEmployeeProfile} from './services';
 // import CalendarOneLine from '../../Components/CalendarOneLine/CalendarOneLine';
 import {setNav} from '../../Store/Reducers/setNavSlice';
 import images from '../../Shared/images';
@@ -32,17 +32,10 @@ import mainColors from '../../Themes/Colors/mainColors';
 
 export default function HomeScreen({navigation}) {
   const dispatch = useDispatch();
-  const avatarSource =
+  const defaultAvatarSource =
     'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png';
 
-  // const {
-  //   profile,
-  //   countGoLate,
-  //   countDayOff,
-  //   totalWork,
-  //   avatarSource,
-  //   standardWork,
-  // } = useEmployeeProfile();
+  const {profile, avatarSource} = useEmployeeProfile();
 
   useEffect(() => {
     dispatch(setNav('home'));
@@ -55,7 +48,7 @@ export default function HomeScreen({navigation}) {
   const Infomation = () => {
     return (
       <View style={styles.personal}>
-        <Avatar size="medium" uri={avatarSource} />
+        <Avatar size="medium" uri={avatarSource ?? defaultAvatarSource} />
         <View style={styles.infomation}>
           <Text style={styles.name}>{WELCOME} THÁI ĐỨC ANH</Text>
           <Text style={styles.position}>{'Lập trình viên'}</Text>

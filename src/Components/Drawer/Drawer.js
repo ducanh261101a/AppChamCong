@@ -2,9 +2,8 @@ import {SafeAreaView, View, Text} from 'react-native';
 import React from 'react';
 import styles from './styles';
 import images from '../../Shared/images';
-import {MenuItem, SvgXml, Avatar} from '..';
-import {useDispatch, useSelector} from 'react-redux';
-// import {RootState} from '../../Store/configureStore';
+import {MenuItem, SvgXml, Avatar} from '../index';
+// import {useDispatch, useSelector} from 'react-redux';
 // import {useAuth} from '../../Shared/hooks';
 // import {setPopup} from '../../Store/Reducers/setPopupSlice';
 
@@ -42,11 +41,7 @@ export default function Drawer(props) {
             </View>
           )} */}
           <View style={styles.listMenu}>
-            <MenuItem>Đăng kí ca làm</MenuItem>
-            <MenuItem>Giao việc</MenuItem>
             <MenuItem>Yêu cầu</MenuItem>
-            <MenuItem>Bảng lương</MenuItem>
-            <MenuItem>Báo cáo</MenuItem>
             <MenuItem>Quản lý phép</MenuItem>
             <MenuItem>Thiết lập</MenuItem>
           </View>
