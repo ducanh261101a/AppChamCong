@@ -28,7 +28,7 @@ export default function LoginScreen({navigation}) {
   const [account, setAccount] = useState();
   const [password, setPassword] = useState('');
   const [rememberAccount, setRememberAccount] = useState(false);
-  const {getItem} = useStorageAsync('remember_account');
+  // const {getItem} = useStorageAsync('remember_account');
 
   // const token = getItem();
 

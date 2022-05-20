@@ -5,11 +5,11 @@ import {setUser} from '../../Store/Reducers/setUserSlice';
 import {setIsLogin} from '../../Store/Reducers/setIsLoginSlice';
 import {useNavigation} from '@react-navigation/native';
 import {setPopup} from '../../Store/Reducers/setPopupSlice';
-import {useStorageAsync} from '../../Shared/hooks';
+// import {useStorageAsync} from '../../Shared/hooks';
 
 export const useLogin = () => {
   const navigation = useNavigation();
-  const {setItem, removeItem, getItem} = useStorageAsync('remember_account');
+  // const {setItem, removeItem, getItem} = useStorageAsync('remember_account');
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({
     account: {

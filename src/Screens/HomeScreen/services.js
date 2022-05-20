@@ -5,7 +5,7 @@ import {setLoading} from '../../Store/Reducers/setLoadingSlice';
 import {setCurrentEmployee} from '../../Store/Reducers/setCurrentEmployeeSlice';
 import {useStorageAsync} from '../../Shared/hooks';
 import {setInfomationEmployee} from '../../Store/Reducers/setInfomationEmployeeSlice';
-const {getItem} = useStorageAsync('remember_account');
+// const {getItem} = useStorageAsync('remember_account');
 
 export const useEmployeeProfile = () => {
   const dispatch = useDispatch();
