@@ -13,11 +13,6 @@ export const useEmployeeProfile = () => {
 
   const user = useSelector(state => state.user.value);
 
-  const userId = {
-    token: '',
-    id: 0,
-  };
-
   const [profile, setProfile] = useState({
     fullName: '',
     position: '',
