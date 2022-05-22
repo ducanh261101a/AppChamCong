@@ -17,6 +17,8 @@ import {
   HOMESCREEN_SALARY_HEADER_TITLE,
   HOMESCREEN_SALARY_HEADER_UNIT,
   DIEMDANH_BUTTON,
+  DANHSACHDANGKINGHISCREEN_TITLE,
+  HOMESCREEN_QUICK_NAVIGATION_ITEM_TITLE_4,
   WELCOME,
 } from '../../Shared/text';
 import {SvgXml} from '../../Components';
@@ -137,15 +139,15 @@ export default function HomeScreen({navigation}) {
         contentStyles={styles.quickNavigationContainer}>
         <QuickNav />
         <View style={styles.quickNavigationRow}>
-            <QuickNavItem
-                onPress={() => navigation.push('DanhSachDangKiVaoRaScreen')}
-                source={images.DangKiVaoRaIcon}
-                title={DANHSACHDANGKIVAORASCREEN_TITLE}
-            />
-            <QuickNavItem
-                source={images.DangKiCongTacNgoaiIcon}
-                title={HOMESCREEN_QUICK_NAVIGATION_ITEM_TITLE_4}
-            />
+          <QuickNavItem
+            onPress={() => navigation.push('DanhSachDangKiVaoRaScreen')}
+            source={images.DangKiVaoRaIcon}
+            title={DANHSACHDANGKINGHISCREEN_TITLE}
+          />
+          <QuickNavItem
+            source={images.DangKiCongTacNgoaiIcon}
+            title={HOMESCREEN_QUICK_NAVIGATION_ITEM_TITLE_4}
+          />
         </View>
       </BoxElement>
     );

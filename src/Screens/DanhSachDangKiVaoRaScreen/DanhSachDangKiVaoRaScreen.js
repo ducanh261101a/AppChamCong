@@ -2,10 +2,10 @@ import React from 'react';
 import {Button, GeneralLayout, TabPanel, Wrapper} from '../../Components';
 import styles from './styles';
 import {
-  DANHSACHDANGKIVAORASCREEN_RIGHT_TITLE,
-  DANHSACHDANGKIVAORASCREEN_TITLE,
+  DANHSACHDANGKINGHISCREEN_RIGHT_TITLE,
+  DANHSACHDANGKINGHISCREEN_TITLE,
 } from '../../Shared/text';
-import {useEmployeeRequest} from './services';
+// import {useEmployeeRequest} from './services';
 
 export default function DanhSachDangKiVaoRaScreen({navigation}) {
   // const {
@@ -17,10 +17,10 @@ export default function DanhSachDangKiVaoRaScreen({navigation}) {
   return (
     <Wrapper>
       <GeneralLayout
-        headerLeftTitle={DANHSACHDANGKIVAORASCREEN_TITLE}
+        headerLeftTitle={DANHSACHDANGKINGHISCREEN_TITLE}
         headerRight={{
           type: 'string',
-          title: DANHSACHDANGKIVAORASCREEN_RIGHT_TITLE,
+          title: DANHSACHDANGKINGHISCREEN_RIGHT_TITLE,
           onPress: () => navigation.navigate('LichSuChamCongScreen'),
         }}
         bodyStyle={styles.body}

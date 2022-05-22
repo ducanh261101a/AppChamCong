@@ -36,8 +36,8 @@ export const HOMESCREEN_QUICK_NAVIGATION_ITEM_TITLE_4 =
 export const HOMESCREEN_QUICK_NAVIGATION_ITEM_TITLE_MORE = 'Xem thêm';
 export const HOMESCREEN_CALENDAR_AND_WORK_TITLE = 'Lịch - Công việc';
 
-export const DANHSACHDANGKIVAORASCREEN_TITLE = 'Danh sách đăng kí vào ra';
-export const DANHSACHDANGKIVAORASCREEN_RIGHT_TITLE = 'Lịch sử Ra/ Vào';
+export const DANHSACHDANGKINGHISCREEN_TITLE = 'Danh sách đăng kí nghỉ';
+export const DANHSACHDANGKINGHISCREEN_RIGHT_TITLE = 'Lịch sử Ra/ Vào';
 export const DIEMDANH_BUTTON = 'Hãy nhớ điểm danh nhé!';
 
 export const DANGKIVAORASCREEN_TITLE = 'Đăng ký vào ra';

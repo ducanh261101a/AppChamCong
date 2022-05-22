@@ -7,7 +7,7 @@ export {default as HeaderBar} from './HeaderBar/HeaderBar';
 export {default as TabPanel} from './TabPanel/TabPanel';
 export {default as LinearGradientCommon} from './LinearGradientCommon/LinearGradientCommon';
 export {default as CheckInDetail} from './CheckInDetail/CheckInDetail';
-// export { default as Popup } from './Popup/Popup'
+export {default as Popup} from './Popup/Popup';
 // export { default as GeneralLayout } from "./GeneralLayout/GeneralLayout"
 export {default as BoxShadow} from './BoxShadow/BoxShadow';
 export {default as BoxElement} from './BoxElement/BoxElement';
