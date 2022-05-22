@@ -1,5 +1,5 @@
 import {useState} from 'react';
-// import mushroom from "pmcc-api"
+import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {setUser} from '../Store/Reducers/setUserSlice';
 import {setIsLogin} from '../Store/Reducers/setIsLoginSlice';
@@ -47,26 +47,7 @@ export const useStorageAsync = key => {
 export const useAuth = () => {
   const dispatch = useDispatch();
   const {setItem, removeItem, getItem} = useStorageAsync('remember_account');
-
-  // const checkAuth = async () => {
-  //     try {
-  //         const response = await mushroom.$auth.statusAsync();
-  //         const status = response.result.status === "logged-in";
-  //         if (status) {
-  //             const getUser = await mushroom.$auth.meAsync({
-  //                 cacheAge: 1
-  //             });
-  //             if (getUser.result) {
-  //                 dispatch(setUser(getUser.result))
-  //             }
-  //         }
-  //         dispatch(setIsLogin(status))
-  //         return status
-  //     } catch (error) {
-  //         dispatch(setIsLogin(false))
-  //         return false
-  //     }
-  // }
+  const navigation = useNavigation();
 
   const logoutAsync = async () => {
     dispatch(setLoading(true));
@@ -74,6 +55,8 @@ export const useAuth = () => {
       await removeItem();
       dispatch(setIsLogin(false));
       dispatch(setLoading(false));
+      dispatch(setUser({}));
+      navigation.navigate('LoginScreen');
     } catch (error) {
       console.log(error);
       dispatch(setLoading(false));

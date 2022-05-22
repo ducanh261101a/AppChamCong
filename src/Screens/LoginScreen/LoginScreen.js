@@ -5,6 +5,8 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
+  BackHandler,
+  Alert,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from './styles';
@@ -19,29 +21,41 @@ import {useLogin} from './services';
 import {useStorageAsync} from '../../Shared/hooks';
 import LinearGradient from 'react-native-linear-gradient';
 import images from '../../Shared/images';
-// import {NetworkInfo} from 'react-native-network-info';
+import {useSelector} from 'react-redux';
 const BackgroundImage = require('../../Assets/Images/BG.png');
 const LogoImage = require('../../Assets/Images/Logo.png');
 
 export default function LoginScreen({navigation}) {
-  const {handleLogin, errors} = useLogin();
+  const {handleLogin, checkToken, errors} = useLogin();
   const [account, setAccount] = useState();
   const [password, setPassword] = useState('');
   const [rememberAccount, setRememberAccount] = useState(false);
-  // const {getItem} = useStorageAsync('remember_account');
+  const user = useSelector(state => state.user.value);
 
-  // const token = getItem();
+  useEffect(() => {
+    checkToken();
+    if (user.token) {
+      navigation.replace('HomeScreen');
+    }
+    const backAction = () => {
+      Alert.alert('Chú ý', 'Bạn chắc chắn muốn thoát ứng dụng?', [
+        {
+          text: 'Hủy',
+          onPress: () => null,
+          style: 'cancel',
+        },
+        {text: 'Đồng ý', onPress: () => BackHandler.exitApp()},
+      ]);
+      return true;
+    };
 
-  // useEffect(() => {
-  //   console.log('token', token);
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
 
-  //   if (token) {
-  //     navigation.replace('HomeScreen');
-  //   }
-  //   (async () => {
-  //     console.log(await getItem());
-  //   })();
-  // }, []);
+    return () => backHandler.remove();
+  }, []);
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

@@ -5,11 +5,11 @@ import {setUser} from '../../Store/Reducers/setUserSlice';
 import {setIsLogin} from '../../Store/Reducers/setIsLoginSlice';
 import {useNavigation} from '@react-navigation/native';
 import {setPopup} from '../../Store/Reducers/setPopupSlice';
-// import {useStorageAsync} from '../../Shared/hooks';
+import {useStorageAsync} from '../../Shared/hooks';
 
 export const useLogin = () => {
   const navigation = useNavigation();
-  // const {setItem, removeItem, getItem} = useStorageAsync('remember_account');
+  const {setItem, getItem} = useStorageAsync('remember_account');
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({
     account: {
@@ -21,8 +21,17 @@ export const useLogin = () => {
     error: '',
   });
 
+  const checkToken = async () => {
+    let token = await getItem();
+    console.log('token', token);
+    if (token) {
+      navigation.replace('HomeScreen');
+    }
+  };
+
   const handleLogin = async (account, password, rememberAccount) => {
     dispatch(setLoading(true));
+    console.log(rememberAccount);
     let flag = true;
     try {
       if (account.trim() === '') {
@@ -71,12 +80,9 @@ export const useLogin = () => {
             dispatch(setUser(resJson));
             dispatch(setIsLogin(true));
 
-            // if (rememberAccount === true) {
-            //   const informationToSave = resJson.token + ' ' + resJson.id;
-            //   setItem(informationToSave);
-            // } else {
-            //   removeItem();
-            // }
+            if (rememberAccount === true) {
+              setItem(resJson.token);
+            }
             dispatch(setLoading(false));
             navigation.replace('HomeScreen');
           } else {
@@ -133,6 +139,7 @@ export const useLogin = () => {
 
   return {
     handleLogin,
+    checkToken,
     errors,
   };
 };

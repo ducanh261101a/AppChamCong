@@ -6,10 +6,10 @@ import {setCurrentEmployee} from '../../Store/Reducers/setCurrentEmployeeSlice';
 import {useStorageAsync} from '../../Shared/hooks';
 import {setInfomationEmployee} from '../../Store/Reducers/setInfomationEmployeeSlice';
 import {setAvatarSrc} from '../../Store/Reducers/setAvatarSrcSlice';
-// const {getItem} = useStorageAsync('remember_account');
 
 export const useEmployeeProfile = () => {
   const dispatch = useDispatch();
+  const {getItem} = useStorageAsync('remember_account');
 
   const user = useSelector(state => state.user.value);
 
@@ -24,10 +24,10 @@ export const useEmployeeProfile = () => {
   let employeesRes;
   let positionsRes;
 
-  const getUserInfo = async (id, token) => {
+  const getUserInfo = async token => {
     try {
       let response = await fetch(
-        `http://backend-timekeeping.herokuapp.com/api/employee/getEmployeeInfoByUserId?id=${id}`,
+        `http://backend-timekeeping.herokuapp.com/api/employee/getEmployeeInfo`,
         {
           method: 'GET',
           headers: {
@@ -49,6 +49,14 @@ export const useEmployeeProfile = () => {
     }
   };
 
+  const getToken = async () => {
+    let token = await getItem();
+    if (!token) {
+      token = user.token;
+    }
+    return token;
+  };
+
   const getData = async () => {
     dispatch(setLoading(true));
     // const tokenAndId = await getItem();
@@ -59,8 +67,9 @@ export const useEmployeeProfile = () => {
     //   console.log('token va id', token, ID, tokenAndId);
     //   employeesRes = await getUserInfo(ID, token);
     // }
+    const token = await getToken();
 
-    employeesRes = await getUserInfo(user.id, user.token);
+    employeesRes = await getUserInfo(token);
 
     try {
       const avatarSrc = employeesRes[0][0].timekeeping_photo;
