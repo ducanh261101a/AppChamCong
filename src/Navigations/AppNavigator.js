@@ -16,6 +16,9 @@ import {
   HomeScreen,
   OnboardingScreen,
   SplashScreen,
+  DangKiVaoRaScreen,
+  DanhSachDangKiVaoRaScreen,
+  LichSuChamCongScreen,
   ForgetPasswordScreen,
   RecoveryPasswordScreen,
   FaceCheck,
@@ -52,6 +55,9 @@ const MainScreen = () => {
         component={RecoveryPasswordStackNavigator}
       />
       <MainStack.Screen name="HomeScreen" component={HomeScreen} />
+      <MainStack.Screen name="DanhSachDangKiVaoRaScreen" component={DanhSachDangKiVaoRaScreen} />
+      <MainStack.Screen name="DangKiVaoRaScreen" component={DangKiVaoRaScreen} />
+      <MainStack.Screen name="LichSuChamCongScreen" component={LichSuChamCongScreen} />
       <MainStack.Screen name="FaceCheck" component={FaceCheck} />
     </MainStack.Navigator>
   );

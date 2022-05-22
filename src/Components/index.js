@@ -3,10 +3,10 @@ export {default as Loading} from './Loading/Loading';
 export {default as CheckBox} from './CheckBox/CheckBox';
 export {default as Wrapper} from './Wrapper/Wrapper';
 export {default as Header} from './Header/Header';
-// export { default as HeaderBar } from './HeaderBar/HeaderBar'
-// export { default as TabPanel } from './TabPanel/TabPanel'
-// export { default as LinearGradientCommon } from './LinearGradientCommon/LinearGradientCommon'
-// export { default as CheckInDetail } from './CheckInDetail/CheckInDetail'
+export {default as HeaderBar} from './HeaderBar/HeaderBar';
+export {default as TabPanel} from './TabPanel/TabPanel';
+export {default as LinearGradientCommon} from './LinearGradientCommon/LinearGradientCommon';
+export {default as CheckInDetail} from './CheckInDetail/CheckInDetail';
 export {default as Popup} from './Popup/Popup';
 // export { default as GeneralLayout } from "./GeneralLayout/GeneralLayout"
 export {default as BoxShadow} from './BoxShadow/BoxShadow';
@@ -26,3 +26,6 @@ export {default as QuickNav} from './QuickNav/QuickNav';
 export {default as QuickNavItem} from './QuickNavItem/QuickNavItem';
 // export { default as NotificationPopup } from "./NotificationPopup/NotificationPopup"
 export {default as CheckBoxElement} from './CheckBox/CheckBox';
+export {default as AddButton} from './AddButton/AddButton';
+export {default as GeneralLayout} from './GeneralLayout/GeneralLayout';
+export {default as InputAndPicker} from './InputAndPicker/InputAndPicker';
