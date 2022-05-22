@@ -1,7 +1,7 @@
 import {View, Text, Dimensions} from 'react-native';
 import React from 'react';
 import styles from './styles';
-import {BoxShadow} from '../BoxShadow/BoxShadow';
+import {BoxShadow} from '../index';
 import {background} from '../../Themes/color';
 
 const width = Dimensions.get('window').width;

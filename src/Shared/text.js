@@ -38,6 +38,7 @@ export const HOMESCREEN_CALENDAR_AND_WORK_TITLE = 'Lịch - Công việc';
 
 export const DANHSACHDANGKIVAORASCREEN_TITLE = 'Danh sách đăng kí vào ra';
 export const DANHSACHDANGKIVAORASCREEN_RIGHT_TITLE = 'Lịch sử Ra/ Vào';
+export const DIEMDANH_BUTTON = 'Hãy nhớ điểm danh nhé!';
 
 export const DANGKIVAORASCREEN_TITLE = 'Đăng ký vào ra';
 

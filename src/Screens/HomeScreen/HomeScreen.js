@@ -15,20 +15,17 @@ import {
   HOMESCREEN_QUICK_NAVIGATION_TITLE,
   HOMESCREEN_SALARY_HEADER_TITLE,
   HOMESCREEN_SALARY_HEADER_UNIT,
-  HOMESCREEN_SALARY_TOTAL_TITLE,
+  DIEMDANH_BUTTON,
   WELCOME,
 } from '../../Shared/text';
 import {SvgXml} from '../../Components';
-
+import {setLoading} from '../../Store/Reducers/setLoadingSlice';
 import LinearGradient from 'react-native-linear-gradient';
 import {useEmployeeProfile} from './services';
-// import CalendarOneLine from '../../Components/CalendarOneLine/CalendarOneLine';
 import {setNav} from '../../Store/Reducers/setNavSlice';
 import images from '../../Shared/images';
 // import {useAuth} from '../../Shared/hooks';
 import mainColors from '../../Themes/Colors/mainColors';
-// import {CalendarTask} from '../../Containers';
-// import {formatMoney} from '../../Shared/utils';
 
 export default function HomeScreen({navigation}) {
   const dispatch = useDispatch();
@@ -38,8 +35,10 @@ export default function HomeScreen({navigation}) {
   const {profile, avatarSource} = useEmployeeProfile();
 
   useEffect(() => {
+    dispatch(setLoading(false));
     dispatch(setNav('home'));
     LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+    console.log('profile', profile);
   }, []);
 
   // const {logoutAsync} = useAuth();
@@ -50,8 +49,10 @@ export default function HomeScreen({navigation}) {
       <View style={styles.personal}>
         <Avatar size="medium" uri={avatarSource ?? defaultAvatarSource} />
         <View style={styles.infomation}>
-          <Text style={styles.name}>{WELCOME} THÁI ĐỨC ANH</Text>
-          <Text style={styles.position}>{'Lập trình viên'}</Text>
+          <Text style={styles.name}>
+            {WELCOME} {profile.fullName}
+          </Text>
+          <Text style={styles.position}>{profile.position}</Text>
         </View>
       </View>
     );
@@ -79,25 +80,11 @@ export default function HomeScreen({navigation}) {
           colors={['#F07F7E', '#F9A857']}
           start={{x: 1, y: 1}}
           end={{x: 0, y: 0}}>
-          <SvgXml xml={images.SalaryIcon} />
-          <View style={styles.salaryTotalInfomation}>
-            <View style={styles.salaryTotalTitle}>
-              <Text style={styles.salaryTotalTitleText}>
-                {HOMESCREEN_SALARY_TOTAL_TITLE}
-              </Text>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('FaceCheck')}>
-                <SvgXml
-                  xml={
-                    showSalary ? images.HideSalaryIcon : images.ShowSalaryIcon
-                  }
-                />
-              </TouchableOpacity>
-            </View>
-            <Text style={styles.salaryTotalValue}>
-              {showSalary ? formatMoney(profile.salary) + ' vnđ' : '***'}
-            </Text>
-          </View>
+          <TouchableOpacity
+            style={styles.salaryTotalInfomation}
+            onPress={() => navigation.navigate('FaceCheck')}>
+            <Text style={styles.salaryTotalTitle}>{DIEMDANH_BUTTON}</Text>
+          </TouchableOpacity>
         </LinearGradient>
         <View style={styles.salaryDetail}>
           <DashboardItem

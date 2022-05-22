@@ -74,14 +74,15 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   salaryTotalInfomation: {
-    marginLeft: 15,
     height: 67,
+    width: '100%',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   salaryTotalTitle: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
+    fontFamily: fontFamilies.secondaryBold,
+    color: '#fff',
+    fontSize: fontSizes.lg,
   },
   salaryTotalTitleText: {
     fontFamily: fontFamilies.primary,

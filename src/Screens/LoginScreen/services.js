@@ -71,12 +71,13 @@ export const useLogin = () => {
             dispatch(setUser(resJson));
             dispatch(setIsLogin(true));
 
-            if (rememberAccount === true) {
-              const informationToSave = resJson.token + ' ' + resJson.id;
-              setItem(informationToSave);
-            } else {
-              removeItem();
-            }
+            // if (rememberAccount === true) {
+            //   const informationToSave = resJson.token + ' ' + resJson.id;
+            //   setItem(informationToSave);
+            // } else {
+            //   removeItem();
+            // }
+            dispatch(setLoading(false));
             navigation.replace('HomeScreen');
           } else {
             dispatch(setLoading(false));

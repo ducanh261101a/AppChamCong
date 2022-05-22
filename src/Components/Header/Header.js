@@ -1,9 +1,8 @@
 import {View, TouchableOpacity, Text} from 'react-native';
 import React from 'react';
 import styles from './styles';
-import {SvgXml} from '../SvgXml/SvgXml';
+import {SvgXml, Avatar} from '../index';
 import {DrawerActions} from '@react-navigation/native';
-import Avatar from '../Avatar/Avatar';
 import {useNavigation} from '@react-navigation/native';
 import images from '../../Shared/images';
 import {useSelector} from 'react-redux';
