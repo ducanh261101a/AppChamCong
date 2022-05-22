@@ -70,7 +70,7 @@ export default function HomeScreen({navigation}) {
             <View style={styles.salaryHeaderWorkingDays}>
               <SvgXml xml={images.TotalWorkingsDayIcon} />
               <Text style={styles.salaryHeaderWorkingDaysUnit}>
-                {'10.000.000'} {HOMESCREEN_SALARY_HEADER_UNIT}
+                {HOMESCREEN_SALARY_HEADER_UNIT}
               </Text>
             </View>
           ),

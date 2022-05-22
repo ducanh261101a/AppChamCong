@@ -19,8 +19,8 @@ export const BUTTON_LOGIN_LABEL = 'Đăng nhập';
 export const REMEMBER_PASSWORD_LABEL = 'Nhớ tài khoản';
 export const FORGOT_PASSWORD_LABEL = 'Quên mật khẩu?';
 
-export const HOMESCREEN_SALARY_HEADER_TITLE = 'Thông tin lương';
-export const HOMESCREEN_SALARY_HEADER_UNIT = 'Ngày làm việc';
+export const HOMESCREEN_SALARY_HEADER_TITLE = 'Thông tin';
+export const HOMESCREEN_SALARY_HEADER_UNIT = 'Làm việc vui vẻ nhé!';
 export const HOMESCREEN_SALARY_TOTAL_TITLE = 'Thu nhập thực nhận';
 export const HOMESCREEN_SALARY_DETAIL_ITEM_TITLE_1 = 'Tổng công \nCông chuẩn';
 export const HOMESCREEN_SALARY_DETAIL_ITEM_TITLE_2 = 'Số lần đi \nlàm muộn';
