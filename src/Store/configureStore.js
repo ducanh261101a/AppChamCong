@@ -1,4 +1,4 @@
-import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import combineReducer from './Reducers/combineReducer';
 
 const rootReducer = (state, action) => {
@@ -7,7 +7,8 @@ const rootReducer = (state, action) => {
   }
   return combineReducer(state, action);
 };
+
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware => getDefaultMiddleware(),
-});
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+})

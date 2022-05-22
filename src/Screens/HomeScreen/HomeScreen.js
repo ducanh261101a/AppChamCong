@@ -4,8 +4,9 @@ import {
   BoxElement,
   DashboardItem,
   QuickNav,
-  TabPanel,
+  // TabPanel,
   Wrapper,
+  QuickNavItem,
 } from '../../Components';
 import {useDispatch} from 'react-redux';
 import styles from './styles';
@@ -135,6 +136,17 @@ export default function HomeScreen({navigation}) {
         }}
         contentStyles={styles.quickNavigationContainer}>
         <QuickNav />
+        <View style={styles.quickNavigationRow}>
+            <QuickNavItem
+                onPress={() => navigation.push('DanhSachDangKiVaoRaScreen')}
+                source={images.DangKiVaoRaIcon}
+                title={DANHSACHDANGKIVAORASCREEN_TITLE}
+            />
+            <QuickNavItem
+                source={images.DangKiCongTacNgoaiIcon}
+                title={HOMESCREEN_QUICK_NAVIGATION_ITEM_TITLE_4}
+            />
+        </View>
       </BoxElement>
     );
   };
