@@ -19,7 +19,7 @@ export default function ForgetPasswordScreen({navigation}) {
   const {getOtp, errors} = useRecoveryPassword();
 
   const [values, setValues] = useState({
-    account: '',
+    email: '',
   });
 
   return (
@@ -49,11 +49,11 @@ export default function ForgetPasswordScreen({navigation}) {
                 important={true}
                 type={'text'}
                 textAlign={'center'}
-                error={errors.username}
+                error={errors.email}
                 onChangeText={value =>
                   setValues({
                     ...values,
-                    account: value,
+                    email: value,
                   })
                 }
                 location="RecoveryPasswordScreen"
@@ -65,13 +65,12 @@ export default function ForgetPasswordScreen({navigation}) {
             </View>
             <Button
               onPress={() =>
-                // getOtp(
-                //   values.account,
-                //   navigation.navigate('RecoveryPasswordScreen', {
-                //     account: values.account,
-                //   }),
-                // )
-                navigation.navigate('RecoveryPasswordScreen')
+                getOtp(
+                  values.email,
+                  navigation.navigate('RecoveryPasswordScreen', {
+                    email: values.email,
+                  }),
+                )
               }
               type="primary"
               layoutStyles={styles.button}

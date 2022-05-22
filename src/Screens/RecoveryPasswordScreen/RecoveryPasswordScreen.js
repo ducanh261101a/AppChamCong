@@ -18,7 +18,7 @@ import {useResetPassword} from './services';
 import {SvgXml, InputElement, Button} from '../../Components';
 
 export default function RecoveryPasswordScreen({route}) {
-  // const {account} = route.params;
+  const {email} = route.params;
   const navigation = useNavigation();
   const {resetPassword, errors} = useResetPassword();
   const [values, setValues] = useState({
@@ -97,7 +97,7 @@ export default function RecoveryPasswordScreen({route}) {
                 important={true}
                 type={'password'}
                 icon={images.LockIcon}
-                error={errors.password}
+                error={errors.repassword}
                 onChangeText={value =>
                   setValues({
                     ...values,
@@ -112,15 +112,13 @@ export default function RecoveryPasswordScreen({route}) {
               />
             </View>
             <Button
-              onPress={
-                () => {}
-                // resetPassword(
-                //   account,
-                //   values.otp,
-                //   values.password,
-                //   values.repassword,
-                //   navigation.replace('LoginScreen'),
-                // )
+              onPress={() =>
+                resetPassword(
+                  email,
+                  values.otp,
+                  values.password,
+                  values.repassword,
+                )
               }
               type="primary"
               layoutStyles={styles.button}
