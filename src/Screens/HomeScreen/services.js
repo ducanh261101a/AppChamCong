@@ -61,14 +61,6 @@ export const useEmployeeProfile = () => {
 
   const getData = async () => {
     dispatch(setLoading(true));
-    // const tokenAndId = await getItem();
-    // if (tokenAndId) {
-    //   let locationOfId = tokenAndId.indexOf(' ');
-    //   const token = tokenAndId.slice(0, locationOfId);
-    //   const ID = tokenAndId.slice(locationOfId + 1);
-    //   console.log('token va id', token, ID, tokenAndId);
-    //   employeesRes = await getUserInfo(ID, token);
-    // }
     const token = await getToken();
 
     employeesRes = await getUserInfo(token);
