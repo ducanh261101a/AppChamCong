@@ -7,6 +7,8 @@ import {Loading, Popup} from './Components';
 import {NativeBaseProvider} from 'native-base';
 import 'react-native-gesture-handler';
 
+console.reportErrorsAsExceptions = true;
+
 export default function App() {
   useEffect(() => {
     StatusBar.setBarStyle('dark-content');

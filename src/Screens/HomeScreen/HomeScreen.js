@@ -27,11 +27,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useEmployeeProfile} from './services';
 import {setNav} from '../../Store/Reducers/setNavSlice';
 import images from '../../Shared/images';
-// import {useAuth} from '../../Shared/hooks';
+import {useQuanLyChamCong} from '../QuanLyChamCongScreen/services';
 import mainColors from '../../Themes/Colors/mainColors';
 
 export default function HomeScreen({navigation}) {
   const dispatch = useDispatch();
+  const {thongtinchamcong} = useQuanLyChamCong();
   const defaultAvatarSource =
     'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png';
 
@@ -94,12 +95,12 @@ export default function HomeScreen({navigation}) {
             icon={images.TotalWorksIcon}
             width="31.6%"
             header={{
-              line1: 'Tổng',
-              line2: 'Công chuẩn',
+              line1: 'Công chuẩn',
+              line2: 'Tổng',
             }}
             headerBackgroundColor={mainColors.headerBackgroundPrimary}>
-            {23 && 23}
-            {18 && '/' + 18}
+            {thongtinchamcong.congdu && thongtinchamcong.congdu}
+            {thongtinchamcong.total && '/' + thongtinchamcong.total}
           </DashboardItem>
           <DashboardItem
             icon={images.TotalWorksIcon}
@@ -109,7 +110,7 @@ export default function HomeScreen({navigation}) {
               line2: 'làm muộn',
             }}
             headerBackgroundColor={mainColors.headerBackgroundSecondary}>
-            {10 && 10}
+            {thongtinchamcong.congthieu && thongtinchamcong.congthieu}
           </DashboardItem>
           <DashboardItem
             icon={images.TotalWorksIcon}
@@ -119,7 +120,7 @@ export default function HomeScreen({navigation}) {
               line2: 'nghỉ làm',
             }}
             headerBackgroundColor={mainColors.headerBackgroundTertiary}>
-            {12 && 12}
+            {thongtinchamcong.nghi && thongtinchamcong.nghi}
           </DashboardItem>
         </View>
       </BoxElement>
@@ -149,66 +150,6 @@ export default function HomeScreen({navigation}) {
             title={HOMESCREEN_QUICK_NAVIGATION_ITEM_TITLE_4}
           />
         </View>
-      </BoxElement>
-    );
-  };
-
-  const CalendarAndWork = () => {
-    return (
-      <BoxElement
-        marginTop={28}
-        marginBottom={100}
-        marginHorizontal={25}
-        hasBackground={true}
-        hasHeader={true}
-        headerContent={{
-          title: HOMESCREEN_CALENDAR_AND_WORK_TITLE,
-        }}
-        contentStyles={styles.calendarAndWorkContainer}>
-        <View style={styles.calendarAndWork_moreButtonContainer}>
-          <TouchableOpacity style={styles.calendarAndWork_moreButton}>
-            <Text
-              style={[
-                styles.calendarAndWork_moreButtonLabel,
-                {
-                  textDecorationLine: 'underline',
-                },
-              ]}>
-              Xem thêm
-            </Text>
-            <Text style={styles.calendarAndWork_moreButtonLabel}>{' >>'}</Text>
-          </TouchableOpacity>
-        </View>
-        {/* <CalendarOneLine onPressDay={e => console.log(e)} /> */}
-        {/* <TabPanel
-                  hasCheckBox={true}
-                  defaultIndex={1}
-                  headerItems={[
-                      {
-                          index: 1,
-                          label: 'Công việc',
-                          quantity: 2,
-                          content: [
-                              {
-
-                              },
-                          ]
-                      },
-                      {
-                          index: 2,
-                          label: 'Lịch họp',
-                          quantity: 3,
-                          content: []
-                      }, {
-                          index: 3,
-                          label: 'Yêu cầu',
-                          quantity: 4,
-                          content: []
-                      }
-                  ]}
-              /> */}
-
-        {/* <CalendarTask /> */}
       </BoxElement>
     );
   };

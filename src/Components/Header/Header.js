@@ -6,15 +6,13 @@ import {DrawerActions} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
 import images from '../../Shared/images';
 import {useSelector} from 'react-redux';
-import {RootState} from '../../Store/configureStore';
-// import { getScreenName } from '../../Shared/utils'
 import {useRoute} from '@react-navigation/native';
 export default function Header({isInHomeScreen}) {
   const route = useRoute();
   const navigation = useNavigation();
-  // const infomationEmployee = useSelector(
-  //   state => state.infomationEmployee.value,
-  // );
+  const infomationEmployee = useSelector(
+    state => state.infomationEmployee.value,
+  );
   return (
     <View style={[!isInHomeScreen && styles.layout, styles.container]}>
       <TouchableOpacity
@@ -35,11 +33,6 @@ export default function Header({isInHomeScreen}) {
           }
         />
       </TouchableOpacity>
-      {/* {
-                route?.name === "GiaoViecScreen" && <Text style={styles.screenName}>
-                    {getScreenName(route?.name)}
-                </Text>
-            } */}
       <View style={styles.right}>
         <TouchableOpacity
           style={styles.notification}
@@ -49,12 +42,7 @@ export default function Header({isInHomeScreen}) {
 
         {!isInHomeScreen && (
           <TouchableOpacity style={styles.avatar}>
-            <Avatar
-              size="small"
-              uri={
-                'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png'
-              }
-            />
+            <Avatar size="small" uri={infomationEmployee.avatar_url} />
           </TouchableOpacity>
         )}
       </View>
