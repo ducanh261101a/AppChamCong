@@ -52,9 +52,7 @@ export default function Drawer(props) {
               }}>
               Giao việc
             </MenuItem>
-            <MenuItem
-              images={images.YeuCauIcon}
-              onPress={() => props.navigation.navigate('DanhSachYeuCauScreen')}>
+            <MenuItem images={images.YeuCauIcon} onPress={() => popup()}>
               Yêu cầu
             </MenuItem>
             <MenuItem images={images.BangLuongIcon} onPress={() => popup()}>
