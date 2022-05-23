@@ -44,8 +44,8 @@ export default function ForgetPasswordScreen({navigation}) {
             <View>
               <InputElement
                 key={0}
-                label={'Nhập Tài khoản để lấy lại mật khẩu'}
-                placeholder={'Nhập tài khoản của bạn tại đây'}
+                label={'Nhập Email để lấy lại mật khẩu'}
+                placeholder={'Nhập Email của bạn tại đây'}
                 important={true}
                 type={'text'}
                 textAlign={'center'}
