@@ -1,56 +1,168 @@
 // import mushroom, { Employee_request } from "pmcc-api"
-// import { useEffect, useState } from "react"
-// import { useDispatch, useSelector } from "react-redux"
-// import employeeRequestApi from "../../Api/employeeRequestApi"
+import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 // import { RootState } from "../../Store/configureStore"
-// import { setLoading } from "../../Store/Reducers/setLoadingSlice"
+import {setPopup} from '../../Store/Reducers/setPopupSlice';
+import {useStorageAsync} from '../../Shared/hooks';
+import {setLoading} from '../../Store/Reducers/setLoadingSlice';
 
 export const useEmployeeRequest = () => {
-    // const dispatch = useDispatch()
-    // const [goOutRequestWaitingForApproval, setGoOutRequestWaitingForApproval] = useState()
-    // const [goOutRequestApproved, setGoOutRequestApproved] = useState()
-    // const [goOutRequestRejected, setGoOutRequestRejected] = useState()
+  const dispatch = useDispatch();
+  const [requestWaitingForApproval, setRequestWaitingForApproval] = useState();
+  const [requestAccept, setRequestAccept] = useState();
+  const [requestRefuse, setRequestRefuse] = useState();
 
-    // const currentEmployee = useSelector((state) => state.currentEmployee.value)
+  const user = useSelector(state => state.user.value);
+  const {getItem} = useStorageAsync('remember_account');
 
-    // let employeeRequestRes
+  let employeeRequestRes;
 
-    // const getEmpoloyeeRequest = async () => {
-    //     dispatch(setLoading(true))
-    //     try {
-    //         employeeRequestRes = await employeeRequestApi.listAsyncReq({
-    //             fields: "type,status,content,employee_id",
-    //             filters: [
-    //                 "type=GO_OUT",
-    //                 `employee_id=${currentEmployee.id}`
-    //             ]
-    //         });
-    //         if (employeeRequestRes) {
+  const getToken = async () => {
+    let token = await getItem();
+    if (!token) {
+      token = user.token;
+    }
+    return token;
+  };
 
-    //             const waitingForApproval = employeeRequestRes.filter((item) => item.status === "WAITING_FOR_APPROVAL")
-    //             const approved = employeeRequestRes.filter((item) => item.status === "APPROVED")
-    //             const rejected = employeeRequestRes.filter((item) => item.status === "REJECTED")
-    //             setGoOutRequestWaitingForApproval(waitingForApproval)
-    //             setGoOutRequestApproved(approved)
-    //             setGoOutRequestRejected(rejected)
-    //         }
+  const getEmpoloyeeRequest = async token => {
+    try {
+      let response = await fetch(
+        'http://backend-timekeeping.herokuapp.com/api/donxinnghi/userGetList',
+        {
+          method: 'GET',
+          headers: {
+            token: token,
+          },
+        },
+      );
 
-    //         dispatch(setLoading(false))
-    //     }
-    //     catch (e) {
-    //         dispatch(setLoading(false))
-    //         console.error("Có lỗi: %o", e);
-    //     }
-    // }
+      if (response.status === 201) {
+        const resJson = await response.json();
+        console.log('resJson', resJson);
+        return resJson;
+        // let waitingForApproval = [];
+        // let accept = [];
+        // let refuse = [];
+        // resJson.listDonxinnghi.forEach(item => {
+        //   if (item.status === 'wait') {
+        //     waitingForApproval.push(item);
+        //   } else if (item.status === 'accept') {
+        //     accept.push(item);
+        //   } else {
+        //     refuse.push(item);
+        //   }
+        // });
+        // const waitingForApproval = resJson.listDonxinnghi.filter(
+        //   item => item.status === 'wait',
+        // );
+        // const accept = resJson.listDonxinnghi.filter(
+        //   item => item.status === 'accept',
+        // );
+        // const refuse = resJson.listDonxinnghi.filter(
+        //   item => item.status === 'refuse',
+        // );
+        // setRequestWaitingForApproval(waitingForApproval);
+        // setRequestAccept(accept);
+        // setRequestRefuse(refuse);
+      }
+    } catch (e) {
+      console.error('Có lỗi: %o', e);
+    }
+  };
 
-    // useEffect(() => {
-    //     getEmpoloyeeRequest()
-    // }, [])
+  const getData = async () => {
+    dispatch(setLoading(true));
+    const token = await getToken();
 
-    // return {
-    //     goOutRequestWaitingForApproval,
-    //     goOutRequestApproved,
-    //     goOutRequestRejected
-    // }
+    employeeRequestRes = await getEmpoloyeeRequest(token);
 
-}
+    try {
+      let waitingForApproval = [];
+      let accept = [];
+      let refuse = [];
+      employeeRequestRes.listDonxinnghi[0].forEach(item => {
+        if (item.status === 'wait') {
+          waitingForApproval.push(item);
+        } else if (item.status === 'accept') {
+          accept.push(item);
+        } else {
+          refuse.push(item);
+        }
+      });
+      setRequestWaitingForApproval(waitingForApproval);
+      setRequestAccept(accept);
+      setRequestRefuse(refuse);
+      dispatch(setLoading(false));
+    } catch (e) {
+      dispatch(setLoading(false));
+      console.error('Có lỗi: %o', e);
+    }
+  };
+
+  const deleteRequest = async id => {
+    dispatch(setLoading(true));
+    const token = await getToken();
+    try {
+      let response = await fetch(
+        `http://backend-timekeeping.herokuapp.com/api/donxinnghi/deleteDonxinnghi/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            token: token,
+          },
+        },
+      );
+      if (response) {
+        dispatch(
+          setPopup({
+            isOpen: true,
+            title: 'Thông báo!',
+            children: 'Hủy yêu cầu thành công!',
+          }),
+        );
+        dispatch(setLoading(false));
+      }
+    } catch (e) {
+      console.error('Có lỗi: %o', e);
+    }
+  };
+
+  const editRequest = async id => {
+    dispatch(setLoading(true));
+    const token = await getToken();
+    try {
+      let response = await fetch(
+        `http://backend-timekeeping.herokuapp.com/api/donxinnghi/editDonxinnghi/id=${id}`,
+        {
+          method: 'PUT',
+          headers: {
+            token: token,
+          },
+        },
+      );
+      if (response) {
+        dispatch(
+          setPopup({
+            isOpen: true,
+            title: 'Thông báo!',
+            children: 'Cập nhật yêu cầu thành công!',
+          }),
+        );
+        dispatch(setLoading(false));
+      }
+    } catch (e) {
+      console.error('Có lỗi: %o', e);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+  return {
+    requestWaitingForApproval,
+    requestAccept,
+    requestRefuse,
+    deleteRequest,
+  };
+};
