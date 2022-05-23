@@ -6,10 +6,12 @@ import {setCurrentEmployee} from '../../Store/Reducers/setCurrentEmployeeSlice';
 import {useStorageAsync} from '../../Shared/hooks';
 import {setInfomationEmployee} from '../../Store/Reducers/setInfomationEmployeeSlice';
 import {setAvatarSrc} from '../../Store/Reducers/setAvatarSrcSlice';
+import {useNavigation} from '@react-navigation/native';
 
 export const useEmployeeProfile = () => {
   const dispatch = useDispatch();
-  const {getItem} = useStorageAsync('remember_account');
+  const {getItem, removeItem} = useStorageAsync('remember_account');
+  const navigation = useNavigation();
 
   const user = useSelector(state => state.user.value);
 
@@ -99,6 +101,8 @@ export const useEmployeeProfile = () => {
       dispatch(setLoading(false));
     } catch (e) {
       dispatch(setLoading(false));
+      removeItem();
+      navigation.navigate('LoginScreen');
       console.error('Có lỗi: %o', e);
     }
   };

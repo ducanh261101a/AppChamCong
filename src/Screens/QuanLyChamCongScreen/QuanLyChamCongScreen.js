@@ -97,7 +97,7 @@ export default function QuanLyChamCongScreen({navigation, route}) {
           // hideExtraDays={true}
           onDayPress={async day => {
             console.log(day);
-            let data = await getInforOfDate(day.dateString);
+            let data = await getInforOfDate(day);
             console.log({data});
             await setDataofDate(data);
             setOpenModal(true);
@@ -205,6 +205,7 @@ export default function QuanLyChamCongScreen({navigation, route}) {
                   justifyContent: 'space-between',
                   flexDirection: 'row',
                   marginTop: 8,
+                  marginBottom: 10,
                 }}>
                 <View style={{flexDirection: 'row'}}>
                   <Dot size={14} type="red" />

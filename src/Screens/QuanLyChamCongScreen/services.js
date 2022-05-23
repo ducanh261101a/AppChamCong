@@ -112,10 +112,17 @@ export const useQuanLyChamCong = () => {
   };
 
   const getInforOfDate = async date => {
+    console.log('date', date);
     dispatch(setLoading(true));
     const token = await checkToken();
     try {
-      let data = await JSON.stringify(date);
+      let obj = {
+        date: date.day,
+        month: '0' + date.month,
+        year: date.year,
+      };
+      let data = await JSON.stringify(obj);
+      console.log('data', data);
       let response = await fetch(
         'http://backend-timekeeping.herokuapp.com/api/timekeeping/thongtinchamcongbydate',
         {
@@ -130,6 +137,7 @@ export const useQuanLyChamCong = () => {
 
       if (response.status == '200' || response.status == '201') {
         let resJson = await response.json();
+        dispatch(setLoading(false));
         return resJson;
       }
     } catch (error) {

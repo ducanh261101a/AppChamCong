@@ -1,13 +1,39 @@
 import {View, Text, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactNativeModal from 'react-native-modal';
 import {SvgXml} from 'react-native-svg';
 import {lockIcon, tickSquare, clockIcon, closeIcon} from '../../Shared/svgXml';
 import Dot from '../Dot/Dot';
 import styles from './styles';
+import moment from 'moment';
 
-export default function Modal({showing, closeFunction, item}) {
-  const [isShowPassword, setIsShowPassword] = useState(false);
+export default function Modal({showing, closeFunction, data}) {
+  const [typeDot, setTypeDot] = useState('');
+  const [typeOfCong, setTypeOfCong] = useState('');
+
+  useEffect(() => {
+    console.log('data status', data.status);
+    switch (data.status) {
+      case 'congdu':
+        setTypeDot('green');
+        setTypeOfCong('Công đủ');
+        break;
+
+      case 'congthieu':
+        setTypeDot('yellow');
+        setTypeOfCong('Công thiếu');
+        break;
+
+      // case 'nghi':
+      //   setTypeDot('red');
+      //   break;
+
+      default:
+        setTypeDot('red');
+        setTypeOfCong('Nghỉ');
+        return;
+    }
+  }, []);
 
   return (
     <ReactNativeModal isVisible={showing}>
@@ -15,8 +41,10 @@ export default function Modal({showing, closeFunction, item}) {
         <View style={styles.content}>
           <View style={styles.topContent}>
             <View style={styles.topLeftContent}>
-              <Dot size={16} type={'green'}></Dot>
-              <Text style={styles.timeText}>17/02/2022</Text>
+              <Dot size={16} type={typeDot}></Dot>
+              <Text style={styles.timeText}>
+                {moment(data.lichsu.createdAt).format('YYYY-MM-DD')}
+              </Text>
             </View>
             <View style={styles.topRightContent}>
               <Text style={styles.topText}>Công đã khóa</Text>
@@ -34,7 +62,7 @@ export default function Modal({showing, closeFunction, item}) {
                   alignItems: 'center',
                 }}>
                 <SvgXml xml={tickSquare} />
-                <Text style={styles.contentText}>Đi làm cả ngày</Text>
+                <Text style={styles.contentText}>{typeOfCong}</Text>
               </View>
 
               <View
@@ -46,7 +74,10 @@ export default function Modal({showing, closeFunction, item}) {
                   alignItems: 'center',
                 }}>
                 <SvgXml xml={clockIcon} />
-                <Text style={styles.contentText}>8h30-20h00</Text>
+                <Text style={styles.contentText}>
+                  {moment(data.lichsu.createdAt).format('HH:mm')} -
+                  {moment(data.lichsu.updatedAt).format('HH:mm')}
+                </Text>
               </View>
             </View>
 
