@@ -192,6 +192,7 @@ export default function InputAndPicker({
       <DatePicker
         mode={datePickerMode}
         maximumDate={maximumDate}
+        minimumDate={new Date()}
         modal
         open={datePickerOpen}
         date={date || new Date()}
@@ -203,7 +204,7 @@ export default function InputAndPicker({
         onCancel={() => {
           setDatePickerOpen(false);
         }}
-        textColor="#ffffff"
+        textColor="#000"
         theme="dark"
         locale="vi"
         title={`Chọn ${label}`.toLocaleUpperCase()}

@@ -6,6 +6,7 @@ import {GeneralLayout} from '../../Components';
 import {useDispatch} from 'react-redux';
 import {resetClipboard} from '../../Store/Reducers/setClipboardSlice';
 import {View} from 'react-native';
+import {useEmpoyeeRequest} from './services';
 
 export default function DangKiVaoRaScreen({navigation}) {
   const dispatch = useDispatch();
@@ -13,6 +14,8 @@ export default function DangKiVaoRaScreen({navigation}) {
     reason: '',
     date: '',
   });
+  const [date, setDate] = useState(new Date());
+  const {handleCreateForm} = useEmpoyeeRequest();
 
   return (
     <Wrapper>
@@ -21,21 +24,17 @@ export default function DangKiVaoRaScreen({navigation}) {
         bodyStyle={styles.body}
         hasBackgroundBody={true}>
         <InputAndPicker
-          label="Ngày muốn nghỉ"
+          label="Ngày đăng ký nghỉ"
           labelPosition="inside"
           size="default"
           type="datetime"
           margin={{
             bottom: 17,
           }}
-          onChangeText={value =>
-            setValues({
-              ...values,
-              date: value,
-            })
-          }
-          datePickerMode="datetime"
+          onPress={event => setDate(event)}
+          datePickerMode="date"
         />
+
         <InputAndPicker
           label="Lý do chi tiết"
           labelPosition="inside"
@@ -63,7 +62,7 @@ export default function DangKiVaoRaScreen({navigation}) {
           </Button>
           <Button
             type="primary"
-            onPress={() => {}}
+            onPress={() => handleCreateForm(date, values.reason)}
             layoutStyles={styles.button}
             textBold={true}>
             Đăng ký
