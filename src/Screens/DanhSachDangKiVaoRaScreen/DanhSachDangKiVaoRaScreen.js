@@ -5,14 +5,11 @@ import {
   DANHSACHDANGKINGHISCREEN_RIGHT_TITLE,
   DANHSACHDANGKINGHISCREEN_TITLE,
 } from '../../Shared/text';
-// import {useEmployeeRequest} from './services';
+import {useEmployeeRequest} from './services';
 
 export default function DanhSachDangKiVaoRaScreen({navigation}) {
-  // const {
-  //     goOutRequestWaitingForApproval,
-  //     goOutRequestApproved,
-  //     goOutRequestRejected
-  // } = useEmployeeRequest()
+  const {requestWaitingForApproval, requestAccept, requestRefuse} =
+    useEmployeeRequest();
 
   return (
     <Wrapper>
@@ -31,20 +28,20 @@ export default function DanhSachDangKiVaoRaScreen({navigation}) {
             {
               index: 1,
               label: 'Chưa duyệt',
-              quantity: 0,
-              content: [],
+              quantity: requestWaitingForApproval?.length || 0,
+              content: requestWaitingForApproval,
             },
             {
               index: 2,
               label: 'Đã duyệt',
-              quantity: 0,
-              content: [],
+              quantity: requestAccept?.length || 0,
+              content: requestAccept,
             },
             {
               index: 3,
               label: 'Từ chối duyệt',
-              quantity: 0,
-              content: [],
+              quantity: requestRefuse?.length || 0,
+              content: requestRefuse,
             },
           ]}
         />

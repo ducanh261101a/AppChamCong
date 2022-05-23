@@ -6,6 +6,9 @@ import {setIsLogin} from '../Store/Reducers/setIsLoginSlice';
 import {useDispatch} from 'react-redux';
 
 import {setLoading} from '../Store/Reducers/setLoadingSlice';
+import {setCurrentEmployee} from '../Store/Reducers/setCurrentEmployeeSlice';
+import {setAvatarSrc} from '../Store/Reducers/setAvatarSrcSlice';
+import {setInfomationEmployee} from '../Store/Reducers/setInfomationEmployeeSlice';
 
 export const useStorageAsync = key => {
   const [value, setValue] = useState();
@@ -56,6 +59,9 @@ export const useAuth = () => {
       dispatch(setIsLogin(false));
       dispatch(setLoading(false));
       dispatch(setUser({}));
+      dispatch(setCurrentEmployee({}));
+      dispatch(setAvatarSrc(''));
+      dispatch(setInfomationEmployee({}));
       navigation.navigate('LoginScreen');
     } catch (error) {
       console.log(error);

@@ -1,3 +1,5 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable react-native/no-inline-styles */
 import {
   View,
   Text,
@@ -17,17 +19,12 @@ import {EMPTY} from '../../Shared/text';
 import {BoxShadow} from '..';
 import CheckBoxElement from '../CheckBox/CheckBox';
 import images from '../../Shared/images';
+import {useEmployeeRequest} from '../../Screens/DanhSachDangKiVaoRaScreen/services';
 
 const BannerEmpty = require('../../Assets/Images/Banner-Empty.png');
 
-const TabPanelItems = ({key, item}) => {
-  const [fullName, setFullName] = useState < any > '';
-  // useEffect(() => {
-  //     (async () => {
-  //         const result = await getNameEmployee(item.employee_id)
-  //         setFullName(result)
-  //     })()
-  // }, [])
+const TabPanelItems = ({key, item, index}) => {
+  const {deleteRequest} = useEmployeeRequest();
 
   return (
     <BoxShadow color="#0000000F" distance={8} marginBottom={17} key={key}>
@@ -35,22 +32,24 @@ const TabPanelItems = ({key, item}) => {
         <View style={styles.contentItemLayout}>
           <SvgXml style={styles.userIcon} xml={images.UserBWIcon} />
           <TouchableOpacity style={styles.contentItemBody}>
-            <Text style={styles.contentItemAuthor}>{fullName}</Text>
+            <Text style={styles.contentItemAuthor}>{item.name}</Text>
             <Text
               style={styles.contentItemMessage}
               numberOfLines={1}
               ellipsizeMode={'tail'}>
-              {item.content}
+              {item.reason}
             </Text>
           </TouchableOpacity>
-          <View style={styles.action}>
-            <TouchableOpacity>
-              <SvgXml xml={images.EditIcon} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <SvgXml xml={images.DeleteIcon} />
-            </TouchableOpacity>
-          </View>
+          {index === 1 && (
+            <View style={styles.action}>
+              <TouchableOpacity>
+                <SvgXml xml={images.EditIcon} />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => deleteRequest(item.id)}>
+                <SvgXml xml={images.DeleteIcon} />
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </View>
     </BoxShadow>
@@ -272,7 +271,7 @@ export default function TabPanel({defaultIndex, headerItems, hasCheckBox}) {
           style={styles.layout}
           contentContainerStyle={styles.contentContainer}>
           {headerItems[focusIndex - 1].content?.map((item, index) => {
-            return <TabPanelItems key={index} item={item} />;
+            return <TabPanelItems key={index} item={item} index={focusIndex} />;
           })}
         </ScrollView>
       )}
